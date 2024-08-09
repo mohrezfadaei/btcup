@@ -10,6 +10,7 @@ idna==3.6
 influxdb-client==1.41.0
 multidict==6.0.5
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
 reactivex==4.0.4
 requests==2.31.0
 six==1.16.0
