@@ -1,12 +1,20 @@
 import asyncio
+import logging
+
+from app import __version__
 
 from .config import Config
 from .repositories import CurrencyRepository
 from .services import CurrencyService
 from .utils import InfluxDBWriter
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 async def main():
+    logger.info(f"Starting Currency App version {__version__}")
+
     config = Config()
 
     api_url = config.get("API_URL")

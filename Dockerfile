@@ -2,6 +2,8 @@ FROM python:3.10-alpine
 
 LABEL maintainer="Mohammad Reza Fadaei <mohrezfadaei@gmail.com>"
 
+ARG VERSION
+
 ENV DEBUG=true
 ENV API_URL=None
 ENV API_TOKEN=None
@@ -22,6 +24,8 @@ RUN pip install -r requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . .
+
+RUN echo "Version: $VERSION" > /app/version.txt
 
 ENTRYPOINT [ "python" ]
 
