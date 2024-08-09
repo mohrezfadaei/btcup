@@ -25,3 +25,6 @@ test:
 
 lint:
 		flake8 app tests
+
+run:
+		$(PYTHON) main.py
