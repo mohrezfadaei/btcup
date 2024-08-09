@@ -1,3 +1,5 @@
+from unittest.mock import AsyncMock, Mock
+
 import pytest
 
 from app.utils.influxdb_writer import InfluxDBWriter
@@ -6,9 +8,9 @@ from app.utils.influxdb_writer import InfluxDBWriter
 @pytest.fixture
 def influx_writer():
     return InfluxDBWriter(
-        influx_url="http://localhost:8086",
-        influx_token="test_token",
-        influx_org="test_org",
+        url="http://localhost:8086",
+        token="test_token",
+        org="test_org",
     )
 
 
@@ -19,8 +21,10 @@ def test_format_data(influx_writer):
 
 @pytest.mark.asyncio
 async def test_write_data(mocker, influx_writer):
-    mock_write_api = mocker.AsyncMock()
-    mock_influx_client = mocker.Mock()
+    mock_write_api = AsyncMock()
+    mock_influx_client = Mock()
+    mock_influx_client.__aenter__ = AsyncMock(return_value=mock_influx_client)
+    mock_influx_client.__aexit__ = AsyncMock(return_value=None)
     mock_influx_client.write_api.return_value = mock_write_api
 
     mocker.patch(

@@ -4,10 +4,10 @@ from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
 
 
 class InfluxDBWriter:
-    def __init__(self, influxdb_url: str, influxdb_token: str, influxdb_org: str):
-        self.influxdb_url = influxdb_url
-        self.influxdb_token = influxdb_token
-        self.influxdb_org = influxdb_org
+    def __init__(self, url: str, token: str, org: str):
+        self.influxdb_url = url
+        self.influxdb_token = token
+        self.influxdb_org = org
 
     def format_data(
         self, currency_rate: str, measurement_name: str = "currency_data"
