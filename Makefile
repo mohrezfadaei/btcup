@@ -19,3 +19,6 @@ install-dev:
 
 format: install-dev
 	isort . && black .
+
+test:
+	pytest
