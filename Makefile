@@ -22,3 +22,6 @@ format: install-dev
 
 test:
 		pytest
+
+lint:
+		flake8 app tests
